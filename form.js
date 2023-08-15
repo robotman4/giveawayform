@@ -55,43 +55,56 @@ function drawHome() {
                             '<span class="input-group-icon" id="icon-ravelry"><i class="fa fa-lg fa-ravelry"></i></span>' +
                             '<input type="text" class="form-control form-control-lg input-custom" aria-describedby="icon-ravelry" id="ravelry">' +
                         '</div>' +
+                        '<label for="pattern" class="form-label">Select pattern</label>' +
+                        '<div class="container">' +
+                            '<div class="row">' +
+                                '<div class="col">' +
+                                    '<div class="form-check">' +
+                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="AdventureLinesTank" value="AdventureLinesTank">' +
+                                        '<label class="form-check-label label-pattern AdventureLinesTank" for="AdventureLinesTank"></label>' +
+                                        // '<label class="form-check-label" for="AdventureLinesTank">Adventure Lines Tank</label>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="col">' +
+                                    '<div class="form-check">' +
+                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="AdventureLaceTee" value="AdventureLaceTee">' +
+                                        '<label class="form-check-label label-pattern AdventureLaceTee" for="AdventureLaceTee"></label>' +
+                                        // '<label class="form-check-label label-pattern" for="AdventureLaceTee">Adventure Lace Tee</label>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="row">' +
+                                '<div class="col">' +
+                                    '<div class="form-check">' +
+                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="PalmhusTee" value="PalmhusTee">' +
+                                        '<label class="form-check-label label-pattern PalmhusTee" for="PalmhusTee"></label>' +
+                                        // '<label class="form-check-label label-pattern" for="PalmhusTee">Palmhus Tee</label>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="col">' +
+                                    '<div class="form-check">' +
+                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="TangramAdventureShawl" value="TangramAdventureShawl">' +
+                                        '<label class="form-check-label label-pattern TangramAdventureShawl" for="TangramAdventureShawl"></label>' +
+                                        // '<label class="form-check-label label-pattern" for="TangramAdventureShawl">Tangram Adventure Shawl</label>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
 
+                        '<label for="destination" class="form-label">Where to?</label>' +
 
-'<div class="container">' +
+'<div class="container p-2">' +
     '<div class="row">' +
         '<div class="col">' +
-            '<div class="form-check">' +
-                '<input class="form-check-input" type="radio" name="itemlistRadio" id="AdventureLinesTank" value="AdventureLinesTank">' +
-                '<label class="form-check-label label-pattern AdventureLinesTank" for="AdventureLinesTank"></label>' +
-                // '<label class="form-check-label" for="AdventureLinesTank">Adventure Lines Tank</label>' +
-            '</div>' +
+            '<input type="radio" class="btn-check" name="itemSendTo" id="success-outlined" autocomplete="off">' +
+            '<label class="w-100 btn btn-light rounded-pill" for="success-outlined">Email</label>' +
         '</div>' +
         '<div class="col">' +
-            '<div class="form-check">' +
-                '<input class="form-check-input" type="radio" name="itemlistRadio" id="AdventureLaceTee" value="AdventureLaceTee">' +
-                '<label class="form-check-label label-pattern AdventureLaceTee" for="AdventureLaceTee"></label>' +
-                // '<label class="form-check-label label-pattern" for="AdventureLaceTee">Adventure Lace Tee</label>' +
-            '</div>' +
-        '</div>' +
-    '</div>' +
-    '<div class="row">' +
-        '<div class="col">' +
-            '<div class="form-check">' +
-                '<input class="form-check-input" type="radio" name="itemlistRadio" id="PalmhusTee" value="PalmhusTee">' +
-                '<label class="form-check-label label-pattern PalmhusTee" for="PalmhusTee"></label>' +
-                // '<label class="form-check-label label-pattern" for="PalmhusTee">Palmhus Tee</label>' +
-            '</div>' +
-        '</div>' +
-        '<div class="col">' +
-            '<div class="form-check">' +
-                '<input class="form-check-input" type="radio" name="itemlistRadio" id="TangramAdventureShawl" value="TangramAdventureShawl">' +
-                '<label class="form-check-label label-pattern TangramAdventureShawl" for="TangramAdventureShawl"></label>' +
-                // '<label class="form-check-label label-pattern" for="TangramAdventureShawl">Tangram Adventure Shawl</label>' +
-            '</div>' +
+            '<input type="radio" class="btn-check" name="itemSendTo" id="danger-outlined" autocomplete="off">' +
+            '<label class="w-100 btn btn-light rounded-pill" for="danger-outlined">Ravelry</label>' +
         '</div>' +
     '</div>' +
 '</div>' +
-
 
 
                         '<button type="submit" class="w-100 btn-lg btn btn-light rounded-pill">Get a free pattern</button>' +

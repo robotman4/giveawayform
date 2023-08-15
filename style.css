@@ -11,7 +11,8 @@ body {
 .TangramAdventureShawl { background-image: url(https://www.bamilla.com/patterns/images/Tangram_Adventure_Shawl_1.jpg);}
 
 .cc-selector input {
-    margin:0;padding:0;
+    margin:0;
+    padding:0;
     -webkit-appearance:none;
        -moz-appearance:none;
             appearance:none;
@@ -30,6 +31,12 @@ body {
     -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
        -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
             filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+
+.label-pattern:hover{
+    -webkit-filter: brightness(1) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1) grayscale(.5) opacity(.9);
+            filter: brightness(1) grayscale(.5) opacity(.9);
 }
 
 .input-custom {
