@@ -73,7 +73,7 @@ function drawHome() {
                         '<div class="container p-1">' +
                             '<div class="row">' +
                                 '<div class="col">' +
-                                    '<input type="radio" class="btn-check" name="deliveryMethod" id="sendToEmail" value="sendToEmail" autocomplete="off">' +
+                                    '<input type="radio" class="btn-check" name="deliveryMethod" id="sendToEmail" value="sendToEmail" autocomplete="off" required>' +
                                     '<label class="w-100 btn btn-outline-light rounded-pill" for="sendToEmail">Email</label>' +
                                 '</div>' +
                                 '<div class="col">' +
