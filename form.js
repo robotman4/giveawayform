@@ -18,28 +18,8 @@ function createContent(html="") {
     content.innerHTML = html
 }
 
-function urlAddPath(selection) {
-    window.history.pushState("#selection", "x", window.location.origin + "#" + selection);
-    window.history.pushState
-    window.addEventListener("popstate", historyListener, false);
-}
-
 function historyListener(event) {
     drawHome()
-}
-
-function drawAbout() {
-    var html = '<div class="px-2 mt-2">' +
-                    '<h1 class="mb-3">About</h1>' +
-                    'This is made for fun.<br>' +
-                    'For any questions please create an issue on <a href="https://github.com/felipgit/stitchmath" target="_blank" class="link-light">GitHub</a>.' +
-                    '<div class="d-grid gap-2 px-2 mt-2">' +
-                        '<a class="w-100 btn-lg btn btn-light rounded-pill" href="https://github.com/felipgit/stitchmath" target="_blank"><i class="fab fa-github"></i> GitHub</a>' +
-                        '<button type="button" class="w-100 btn-lg btn btn-light rounded-pill" onclick="drawHome();return false;">Home</button>' +
-                    '<div>' +
-                '</div>'
-    createContent(html)
-    urlAddPath("About")
 }
 
 function drawHome() {
@@ -108,7 +88,6 @@ function drawHome() {
                     '</form>' +
                 '<div>'
     createContent(html)
-    urlAddPath("Home")
 }
 
 function loadScript() {
@@ -172,6 +151,4 @@ function main() {
     loadScript()
 }
 
-var operators = []
-var locked = false
 main()
