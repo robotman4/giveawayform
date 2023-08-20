@@ -28,7 +28,7 @@ function drawHome() {
                         '<label for="email" class="form-label">Email address</label>' +
                         '<div class="input-group mb-3 rounded-pill bg-white">' +
                             '<span class="input-group-icon" id="icon-email"><i class="fa fa-lg fa-envelope"></i></span>' +
-                            '<input type="mail" class="form-control form-control-lg input-custom" aria-describedby="icon-email" id="emailAddress" name="emailAddress" required>' +
+                            '<input type="mail" class="form-control form-control-lg input-custom" aria-describedby="icon-email" id="emailAddress" name="emailAddress" onblur="validateEmail(this);" required>' +
                         '</div>' +
                         '<label for="ravelry" class="form-label">Ravelry username</label>' +
                         '<div class="input-group mb-3 rounded-pill bg-white">' +
@@ -143,6 +143,15 @@ function loadScript() {
             console.error('Error:', error);
         });
     });
+}
+
+function validateEmail(emailField){
+    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    if (reg.test(emailField.value) == false) {
+        alert('Invalid Email Address');
+        return false;
+    }
+    return true;
 }
 
 function main() {
