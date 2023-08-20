@@ -58,42 +58,39 @@ function drawHome() {
                         '<label for="pattern" class="form-label">Select pattern</label>' +
                         '<div class="container">' +
                             '<div class="row">' +
-                                '<div class="col">' +
-                                    '<div class="form-check">' +
-                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="AdventureLinesTank" value="AdventureLinesTank">' +
+                                '<div class="col-6 col-md-3">' +
+                                    '<div class="form-check p-0 item-selector">' +
+                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="AdventureLinesTank" value="AdventureLinesTank" hidden>' +
                                         '<label class="form-check-label label-pattern AdventureLinesTank" for="AdventureLinesTank"></label>' +
                                         // '<label class="form-check-label" for="AdventureLinesTank">Adventure Lines Tank</label>' +
                                     '</div>' +
                                 '</div>' +
-                                '<div class="col">' +
-                                    '<div class="form-check">' +
-                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="AdventureLaceTee" value="AdventureLaceTee">' +
+                                '<div class="col-6 col-md-3">' +
+                                    '<div class="form-check p-0 item-selector">' +
+                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="AdventureLaceTee" value="AdventureLaceTee" hidden>' +
                                         '<label class="form-check-label label-pattern AdventureLaceTee" for="AdventureLaceTee"></label>' +
                                         // '<label class="form-check-label label-pattern" for="AdventureLaceTee">Adventure Lace Tee</label>' +
                                     '</div>' +
                                 '</div>' +
-                            '</div>' +
-                            '<div class="row">' +
-                                '<div class="col">' +
-                                    '<div class="form-check">' +
-                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="PalmhusTee" value="PalmhusTee">' +
+                                '<div class="col-6 col-md-3">' +
+                                    '<div class="form-check p-0 item-selector">' +
+                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="PalmhusTee" value="PalmhusTee" hidden>' +
                                         '<label class="form-check-label label-pattern PalmhusTee" for="PalmhusTee"></label>' +
                                         // '<label class="form-check-label label-pattern" for="PalmhusTee">Palmhus Tee</label>' +
                                     '</div>' +
                                 '</div>' +
-                                '<div class="col">' +
-                                    '<div class="form-check">' +
-                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="TangramAdventureShawl" value="TangramAdventureShawl">' +
+                                '<div class="col-6 col-md-3">' +
+                                    '<div class="form-check p-0 item-selector">' +
+                                        '<input class="form-check-input" type="radio" name="itemListRadio" id="TangramAdventureShawl" value="TangramAdventureShawl" hidden>' +
                                         '<label class="form-check-label label-pattern TangramAdventureShawl" for="TangramAdventureShawl"></label>' +
                                         // '<label class="form-check-label label-pattern" for="TangramAdventureShawl">Tangram Adventure Shawl</label>' +
                                     '</div>' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +
-
+                        '<div class="p-0">&nbsp;</div>' +
                         '<label for="destination" class="form-label">Where to?</label>' +
-
-'<div class="container p-2">' +
+'<div class="container p-1">' +
     '<div class="row">' +
         '<div class="col">' +
             '<input type="radio" class="btn-check" name="itemSendTo" id="success-outlined" autocomplete="off">' +
@@ -106,6 +103,7 @@ function drawHome() {
     '</div>' +
 '</div>' +
 
+'<div class="p-1">&nbsp;</div>' +
 
                         '<button type="submit" class="w-100 btn-lg btn btn-light rounded-pill">Get a free pattern</button>' +
                         '<div id="disclaimer" class="form-text-light">We will never share your details with anyone else.</div>' +
