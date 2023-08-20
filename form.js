@@ -44,16 +44,16 @@ function drawAbout() {
 
 function drawHome() {
     var html = '<div class="d-grid gap-2 px-2 mt-2">' +
-                    '<form>' +
+                    '<form id="freepattern202308">' +
                         '<label for="email" class="form-label">Email address</label>' +
                         '<div class="input-group mb-3 rounded-pill bg-white">' +
                             '<span class="input-group-icon" id="icon-email"><i class="fa fa-lg fa-envelope"></i></span>' +
-                            '<input type="mail" class="form-control form-control-lg input-custom" aria-describedby="icon-email" name="emailAddress" required>' +
+                            '<input type="mail" class="form-control form-control-lg input-custom" aria-describedby="icon-email" id="emailAddress" name="emailAddress" required>' +
                         '</div>' +
                         '<label for="ravelry" class="form-label">Ravelry username</label>' +
                         '<div class="input-group mb-3 rounded-pill bg-white">' +
                             '<span class="input-group-icon" id="icon-ravelry"><i class="fa fa-lg fa-ravelry"></i></span>' +
-                            '<input type="text" class="form-control form-control-lg input-custom" aria-describedby="icon-ravelry" name="ravelryUser">' +
+                            '<input type="text" class="form-control form-control-lg input-custom" aria-describedby="icon-ravelry" id="ravelryUser" ename="ravelryUser">' +
                         '</div>' +
                         '<label for="pattern" class="form-label">Select pattern</label>' +
                         '<div class="container">' +
@@ -93,12 +93,12 @@ function drawHome() {
                         '<div class="container p-1">' +
                             '<div class="row">' +
                                 '<div class="col">' +
-                                    '<input type="radio" class="btn-check" name="itemSendTo" id="itemSendToEmail" value="itemSendToEmail" autocomplete="off">' +
-                                    '<label class="w-100 btn btn-outline-light rounded-pill" for="itemSendToEmail">Email</label>' +
+                                    '<input type="radio" class="btn-check" name="deliveryMethod" id="sendToEmail" value="sendToEmail" autocomplete="off">' +
+                                    '<label class="w-100 btn btn-outline-light rounded-pill" for="sendToEmail">Email</label>' +
                                 '</div>' +
                                 '<div class="col">' +
-                                    '<input type="radio" class="btn-check" name="itemSendTo" id="itemSendToRavelry" value="itemSendToRavelry" autocomplete="off">' +
-                                    '<label class="w-100 btn btn-outline-light rounded-pill " for="itemSendToRavelry">Ravelry</label>' +
+                                    '<input type="radio" class="btn-check" name="deliveryMethod" id="sendToRavelry" value="sendToRavelry" autocomplete="off">' +
+                                    '<label class="w-100 btn btn-outline-light rounded-pill " for="sendToRavelry">Ravelry</label>' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +
@@ -111,9 +111,65 @@ function drawHome() {
     urlAddPath("Home")
 }
 
+function loadScript() {
+    document.getElementById("freepattern202308").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting traditionally
+
+        const itemListRadioButtons = document.getElementsByName("itemList");
+        let selectedItemValue = "";
+        const itemDeliveryRadioButtons = document.getElementsByName("deliveryMethod");
+        let selectedDeliveryValue = "";
+
+        // Iterate through the radio buttons to find the selected one
+        for (let i = 0; i < itemListRadioButtons.length; i++) {
+            if (itemListRadioButtons[i].checked) {
+                selectedItemValue = itemListRadioButtons[i].value;
+                break; // Exit the loop once a checked radio button is found
+            }
+        }
+
+        // Iterate through the radio buttons to find the selected one
+        for (let i = 0; i < itemDeliveryRadioButtons.length; i++) {
+            if (itemDeliveryRadioButtons[i].checked) {
+                selectedDeliveryValue = itemDeliveryRadioButtons[i].value;
+                break; // Exit the loop once a checked radio button is found
+            }
+        }
+
+        // Create a JavaScript object with the form data
+        const formData = {
+            emailAddress: document.getElementById("emailAddress").value,
+            ravelryUser: document.getElementById("ravelryUser").value,
+            itemList: selectedItemValue,
+            itemSendTo: selectedDeliveryValue
+        };
+
+        console.log(formData)
+
+        // Make an HTTP POST request to the Pocketbase API endpoint
+        fetch('YOUR_POCKETBASE_API_ENDPOINT', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response from Pocketbase (e.g., display a success message)
+            console.log(data);
+        })
+        .catch(error => {
+            // Handle any errors that occur during the request
+            console.error('Error:', error);
+        });
+    });
+}
+
 function main() {
     createMenu()
     drawHome()
+    loadScript()
 }
 
 var operators = []
