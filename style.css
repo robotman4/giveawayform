@@ -5,10 +5,46 @@ body {
     color: #FFFFFF !important;
 }
 
-.AdventureLinesTank {    background-image: url(https://www.bamilla.com/patterns/images/Adventure_Lines_Tank_1.jpg);}
-.AdventureLaceTee {      background-image: url(https://www.bamilla.com/patterns/images/Adventure_Lace_Tee_1.jpg);}
-.PalmhusTee {            background-image: url(https://www.bamilla.com/patterns/images/Palmhus_Tee_1.jpg);}
-.TangramAdventureShawl { background-image: url(https://www.bamilla.com/patterns/images/Tangram_Adventure_Shawl_1.jpg);}
+.AdventureLinesTank {    
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-image: url(https://www.bamilla.com/patterns/images/Adventure_Lines_Tank_1.jpg);
+}
+.AdventureLaceTee {      
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-image: url(https://www.bamilla.com/patterns/images/Adventure_Lace_Tee_1.jpg);
+}
+.PalmhusTee {            
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-image: url(https://www.bamilla.com/patterns/images/Palmhus_Tee_1.jpg);
+}
+.TangramAdventureShawl { 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-image: url(https://www.bamilla.com/patterns/images/Tangram_Adventure_Shawl_1.jpg);
+}
 
 .item-selector input {
     margin:0;
@@ -19,6 +55,9 @@ body {
 }
 
 .item-selector input:checked + .label-pattern {
+    margin:0;
+    padding:0;
+    box-shadow: 0px 0px 15px lightgray;
     -webkit-filter: none;
        -moz-filter: none;
             filter: none;
@@ -33,7 +72,7 @@ body {
     background-size:contain;
     background-repeat:no-repeat;
     display:inline-block;
-    width:100%;
+    width:150px;
     height:150px;
     -webkit-transition: all 100ms ease-in;
        -moz-transition: all 100ms ease-in;
