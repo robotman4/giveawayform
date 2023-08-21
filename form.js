@@ -1,9 +1,10 @@
 function createMenu() {
     var div = document.createElement("div")
-    var navbar = '<nav class="navbar navbar-expand-lg navbar-light bg-light">' +
-    '<div class="container-fluid">' +
-        '<a class="navbar-brand" href=".">Bamilla</a>' +
-    '</div>' +
+    var navbar = '<!-- GENERATED MENU -->' +
+    '<nav class="navbar navbar-expand-lg navbar-light bg-light">' +
+        '<div class="container-fluid">' +
+            '<a class="navbar-brand" href=".">Bamilla</a>' +
+        '</div>' +
     '</nav>'
 
     div.innerHTML = navbar
@@ -19,19 +20,19 @@ function createContent(html="") {
 }
 
 function historyListener(event) {
-    drawHome()
+    drawForm()
 }
 
 function drawThanks() {
-    var html = '<!-- GENERATED HTML -->' +
+    var html = '<!-- GENERATED THANKS -->' +
         '<div class="d-grid gap-2 px-2 mt-2"> align="center"' +
             '<h2>Thank You!</h2>' +
             '<div>Your free pattern is getting ready! :)</div>' +
         '</div>'
     createContent(html)
 }
-function drawHome() {
-    var html = '<!-- GENERATED HTML -->' +
+function drawForm() {
+    var html = '<!-- GENERATED FORM -->' +
     '<div class="d-grid gap-2 px-2 mt-2">' +
         '<form id="freepattern202308">' +
             '<label for="email" class="form-label">Email address</label>' +
@@ -138,7 +139,6 @@ function loadScript() {
 
         try {
             const response = await pb.collection('freepattern202308').create(formData)
-
             if (response && response.collectionId) {
                 // Successful submission
                 alert("Your free pattern is getting ready!")
@@ -169,7 +169,7 @@ function loadScript() {
 
 function main() {
     createMenu()
-    drawHome()
+    drawForm()
     loadScript()
 }
 
