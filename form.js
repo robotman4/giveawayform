@@ -23,76 +23,80 @@ function historyListener(event) {
 }
 
 function drawHome() {
-    var html = '<div class="d-grid gap-2 px-2 mt-2">' +
-                    '<form id="freepattern202308">' +
-                        '<label for="email" class="form-label">Email address</label>' +
-                        '<div class="input-group mb-3 rounded-pill bg-white">' +
-                            '<span class="input-group-icon" id="icon-email"><i class="fa fa-lg fa-envelope"></i></span>' +
-                            '<input type="email" class="form-control form-control-lg input-custom" aria-describedby="icon-email" id="emailAddress" name="emailAddress" required>' +
+    var html = '<!-- GENERATED HTML -->' +
+    '<div class="d-grid gap-2 px-2 mt-2">' +
+        '<form id="freepattern202308">' +
+            '<label for="email" class="form-label">Email address</label>' +
+            '<div class="input-group mb-3 rounded-pill bg-white">' +
+                '<span class="input-group-icon" id="icon-email"><i class="fa fa-lg fa-envelope"></i></span>' +
+                '<input type="email" class="form-control form-control-lg input-custom" aria-describedby="icon-email" id="emailAddress" name="emailAddress" required>' +
+            '</div>' +
+            '<label for="ravelry" class="form-label">Ravelry username</label>' +
+            '<div class="input-group mb-3 rounded-pill bg-white">' +
+                '<span class="input-group-icon" id="icon-ravelry"><i class="fa fa-lg fa-ravelry"></i></span>' +
+                '<input type="text" class="form-control form-control-lg input-custom" aria-describedby="icon-ravelry" id="ravelryUser" ename="ravelryUser">' +
+            '</div>' +
+            '<label for="pattern" class="form-label">Select pattern</label>' +
+            '<div class="container">' +
+                '<div class="row">' +
+                    '<div class="col-6 col-md-3">' +
+                        '<div class="form-check p-0 item-selector">' +
+                            '<input class="form-check-input" type="radio" name="itemList" id="AdventureLinesTank" value="AdventureLinesTank" hidden required>' +
+                            '<label class="form-check-label label-pattern AdventureLinesTank" for="AdventureLinesTank"></label>' +
+                            // '<label class="form-check-label" for="AdventureLinesTank">Adventure Lines Tank</label>' +
                         '</div>' +
-                        '<label for="ravelry" class="form-label">Ravelry username</label>' +
-                        '<div class="input-group mb-3 rounded-pill bg-white">' +
-                            '<span class="input-group-icon" id="icon-ravelry"><i class="fa fa-lg fa-ravelry"></i></span>' +
-                            '<input type="text" class="form-control form-control-lg input-custom" aria-describedby="icon-ravelry" id="ravelryUser" ename="ravelryUser">' +
+                    '</div>' +
+                    '<div class="col-6 col-md-3">' +
+                        '<div class="form-check p-0 item-selector">' +
+                            '<input class="form-check-input" type="radio" name="itemList" id="AdventureLaceTee" value="AdventureLaceTee" hidden>' +
+                            '<label class="form-check-label label-pattern AdventureLaceTee" for="AdventureLaceTee"></label>' +
+                            // '<label class="form-check-label label-pattern" for="AdventureLaceTee">Adventure Lace Tee</label>' +
                         '</div>' +
-                        '<label for="pattern" class="form-label">Select pattern</label>' +
-                        '<div class="container">' +
-                            '<div class="row">' +
-                                '<div class="col-6 col-md-3">' +
-                                    '<div class="form-check p-0 item-selector">' +
-                                        '<input class="form-check-input" type="radio" name="itemList" id="AdventureLinesTank" value="AdventureLinesTank" hidden required>' +
-                                        '<label class="form-check-label label-pattern AdventureLinesTank" for="AdventureLinesTank"></label>' +
-                                        // '<label class="form-check-label" for="AdventureLinesTank">Adventure Lines Tank</label>' +
-                                    '</div>' +
-                                '</div>' +
-                                '<div class="col-6 col-md-3">' +
-                                    '<div class="form-check p-0 item-selector">' +
-                                        '<input class="form-check-input" type="radio" name="itemList" id="AdventureLaceTee" value="AdventureLaceTee" hidden>' +
-                                        '<label class="form-check-label label-pattern AdventureLaceTee" for="AdventureLaceTee"></label>' +
-                                        // '<label class="form-check-label label-pattern" for="AdventureLaceTee">Adventure Lace Tee</label>' +
-                                    '</div>' +
-                                '</div>' +
-                                '<div class="col-6 col-md-3">' +
-                                    '<div class="form-check p-0 item-selector">' +
-                                        '<input class="form-check-input" type="radio" name="itemList" id="PalmhusTee" value="PalmhusTee" hidden>' +
-                                        '<label class="form-check-label label-pattern PalmhusTee" for="PalmhusTee"></label>' +
-                                        // '<label class="form-check-label label-pattern" for="PalmhusTee">Palmhus Tee</label>' +
-                                    '</div>' +
-                                '</div>' +
-                                '<div class="col-6 col-md-3">' +
-                                    '<div class="form-check p-0 item-selector">' +
-                                        '<input class="form-check-input" type="radio" name="itemList" id="TangramAdventureShawl" value="TangramAdventureShawl" hidden>' +
-                                        '<label class="form-check-label label-pattern TangramAdventureShawl" for="TangramAdventureShawl"></label>' +
-                                        // '<label class="form-check-label label-pattern" for="TangramAdventureShawl">Tangram Adventure Shawl</label>' +
-                                    '</div>' +
-                                '</div>' +
-                            '</div>' +
+                    '</div>' +
+                    '<div class="col-6 col-md-3">' +
+                        '<div class="form-check p-0 item-selector">' +
+                            '<input class="form-check-input" type="radio" name="itemList" id="PalmhusTee" value="PalmhusTee" hidden>' +
+                            '<label class="form-check-label label-pattern PalmhusTee" for="PalmhusTee"></label>' +
+                            // '<label class="form-check-label label-pattern" for="PalmhusTee">Palmhus Tee</label>' +
                         '</div>' +
-                        '<div class="p-0">&nbsp;</div>' +
-                        '<label for="destination" class="form-label">Send to</label>' +
-                        '<div class="container p-1">' +
-                            '<div class="row">' +
-                                '<div class="col">' +
-                                    '<input type="radio" class="btn-check" name="deliveryMethod" id="sendToEmail" value="sendToEmail" autocomplete="off" required>' +
-                                    '<label class="w-100 btn btn-outline-light rounded-pill" for="sendToEmail">Email</label>' +
-                                '</div>' +
-                                '<div class="col">' +
-                                    '<input type="radio" class="btn-check" name="deliveryMethod" id="sendToRavelry" value="sendToRavelry" autocomplete="off">' +
-                                    '<label class="w-100 btn btn-outline-light rounded-pill " for="sendToRavelry">Ravelry</label>' +
-                                '</div>' +
-                            '</div>' +
+                    '</div>' +
+                    '<div class="col-6 col-md-3">' +
+                        '<div class="form-check p-0 item-selector">' +
+                            '<input class="form-check-input" type="radio" name="itemList" id="TangramAdventureShawl" value="TangramAdventureShawl" hidden>' +
+                            '<label class="form-check-label label-pattern TangramAdventureShawl" for="TangramAdventureShawl"></label>' +
+                            // '<label class="form-check-label label-pattern" for="TangramAdventureShawl">Tangram Adventure Shawl</label>' +
                         '</div>' +
-                        '<div class="p-1">&nbsp;</div>' +
-                        '<button type="submit" class="w-100 btn-lg btn btn-light rounded-pill">Get your free pattern</button>' +
-                        '<div id="disclaimer" class="form-text-light" align="center">We will never share your details with anyone else.</div>' +
-                    '</form>' +
-                '<div>'
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="p-0">&nbsp;</div>' +
+            '<label for="destination" class="form-label">Send to</label>' +
+            '<div class="container p-1">' +
+                '<div class="row">' +
+                    '<div class="col">' +
+                        '<input type="radio" class="btn-check" name="deliveryMethod" id="email" value="email" autocomplete="off" required>' +
+                        '<label class="w-100 btn btn-outline-light rounded-pill" for="email">Email</label>' +
+                    '</div>' +
+                    '<div class="col">' +
+                        '<input type="radio" class="btn-check" name="deliveryMethod" id="ravelry" value="ravelry" autocomplete="off">' +
+                        '<label class="w-100 btn btn-outline-light rounded-pill " for="ravelry">Ravelry</label>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="p-1">&nbsp;</div>' +
+            '<button type="submit" class="w-100 btn-lg btn btn-light rounded-pill">Get your free pattern</button>' +
+            '<div id="disclaimer" class="form-text-light" align="center">We will never share your details with anyone else.</div>' +
+        '</form>' +
+    '<div>'
     createContent(html)
 }
 
 function loadScript() {
-    document.getElementById("freepattern202308").addEventListener("submit", function(event) {
+    document.getElementById("freepattern202308").addEventListener("submit", async function(event) {
         event.preventDefault(); // Prevent the form from submitting traditionally
+
+        let collectionName = "freepattern202308";
+        const pb = new PocketBase('http://node3.felip.se:8090');
 
         const itemListRadioButtons = document.getElementsByName("itemList");
         let selectedItemValue = "";
@@ -117,31 +121,34 @@ function loadScript() {
 
         // Create a JavaScript object with the form data
         const formData = {
-            emailAddress: document.getElementById("emailAddress").value,
-            ravelryUser: document.getElementById("ravelryUser").value,
-            itemList: selectedItemValue,
-            itemSendTo: selectedDeliveryValue
+            token: "0000001",
+            email: document.getElementById("emailAddress").value,
+            ravelry: document.getElementById("ravelryUser").value,
+            pattern: selectedItemValue,
+            delivery: selectedDeliveryValue
         };
 
         console.log(formData)
 
-        // Make an HTTP POST request to the Pocketbase API endpoint
-        fetch('YOUR_POCKETBASE_API_ENDPOINT', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response from Pocketbase (e.g., display a success message)
-            console.log(data);
-        })
-        .catch(error => {
-            // Handle any errors that occur during the request
-            console.error('Error:', error);
-        });
+        const record = await pb.collection('freepattern202308').create(formData);
+
+    //     // Make an HTTP POST request to the Pocketbase API endpoint
+    //     fetch('YOUR_POCKETBASE_API_ENDPOINT', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(formData),
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         // Handle the response from Pocketbase (e.g., display a success message)
+    //         console.log(data);
+    //     })
+    //     .catch(error => {
+    //         // Handle any errors that occur during the request
+    //         console.error('Error:', error);
+    //     });
     });
 }
 
