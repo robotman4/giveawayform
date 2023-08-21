@@ -3,7 +3,7 @@ function createMenu() {
     var navbar = '<!-- GENERATED MENU -->' +
     '<nav class="navbar navbar-expand-lg navbar-light bg-light">' +
         '<div class="container-fluid">' +
-            '<a class="navbar-brand" href=".">Bamilla</a>' +
+            '<a class="navbar-brand" href="."><img style="height: 25px;" src="https://www.bamilla.com/favicon.ico"> Bamilla</a>' +
         '</div>' +
     '</nav>'
 
