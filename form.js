@@ -69,7 +69,7 @@ function drawForm() {
             '<label for="ravelry" class="form-label">Ravelry username</label>' +
             '<div class="input-group mb-3 rounded-pill bg-white">' +
                 '<span class="input-group-icon" id="icon-ravelry"><i class="fa fa-lg fa-ravelry"></i></span>' +
-                '<input type="text" class="form-control form-control-lg input-custom" aria-describedby="icon-ravelry" id="ravelryUser" ename="ravelryUser">' +
+                '<input type="text" class="form-control form-control-lg input-custom" aria-describedby="icon-ravelry" id="ravelryUser" name="ravelryUser">' +
             '</div>' +
             '<label for="pattern" class="form-label">Select pattern</label>' +
             '<div class="container">' +
