@@ -128,7 +128,6 @@ function loadScript() {
 
         // Create a JavaScript object with the form data
         const formData = {
-            // token: "0000001",
             token: document.getElementById("token").value,
             email: document.getElementById("emailAddress").value,
             ravelry: document.getElementById("ravelryUser").value,
@@ -140,7 +139,6 @@ function loadScript() {
             const response = await pb.collection('freepattern202308').create(formData)
             if (response && response.collectionId) {
                 // Successful submission
-                // alert("Your free pattern is getting ready!")
                 // You can optionally reset the form here if needed
                 document.getElementById("freepattern202308").reset()
                 drawThanks()
