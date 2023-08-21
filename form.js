@@ -22,6 +22,14 @@ function historyListener(event) {
     drawHome()
 }
 
+function drawThanks() {
+    var html = '<!-- GENERATED HTML -->' +
+        '<div class="d-grid gap-2 px-2 mt-2">' +
+            '<h2>Thanks You!</h2>' +
+            '<div align="center">Your pattern will be sent out later :)</div>' +
+        '</div>'
+    createContent(html)
+}
 function drawHome() {
     var html = '<!-- GENERATED HTML -->' +
     '<div class="d-grid gap-2 px-2 mt-2">' +
@@ -41,30 +49,30 @@ function drawHome() {
                 '<div class="row">' +
                     '<div class="col-6 col-md-3">' +
                         '<div class="form-check p-0 item-selector">' +
-                            '<input class="form-check-input" type="radio" name="itemList" id="AdventureLinesTank" value="AdventureLinesTank" hidden required>' +
-                            '<label class="form-check-label label-pattern AdventureLinesTank" for="AdventureLinesTank"></label>' +
-                            // '<label class="form-check-label" for="AdventureLinesTank">Adventure Lines Tank</label>' +
+                            '<input class="form-check-input" type="radio" name="itemList" id="Adventure Lines Tank" value="Adventure Lines Tank" hidden required>' +
+                            '<label class="form-check-label label-pattern AdventureLinesTank" for="Adventure Lines Tank"></label>' +
+                            // '<label class="form-check-label" for="Adventure Lines Tank">Adventure Lines Tank</label>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-6 col-md-3">' +
                         '<div class="form-check p-0 item-selector">' +
-                            '<input class="form-check-input" type="radio" name="itemList" id="AdventureLaceTee" value="AdventureLaceTee" hidden>' +
-                            '<label class="form-check-label label-pattern AdventureLaceTee" for="AdventureLaceTee"></label>' +
-                            // '<label class="form-check-label label-pattern" for="AdventureLaceTee">Adventure Lace Tee</label>' +
+                            '<input class="form-check-input" type="radio" name="itemList" id="Adventure Lace Tee" value="Adventure Lace Tee" hidden>' +
+                            '<label class="form-check-label label-pattern AdventureLaceTee" for="Adventure Lace Tee"></label>' +
+                            // '<label class="form-check-label label-pattern" for="Adventure Lace Tee">Adventure Lace Tee</label>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-6 col-md-3">' +
                         '<div class="form-check p-0 item-selector">' +
-                            '<input class="form-check-input" type="radio" name="itemList" id="PalmhusTee" value="PalmhusTee" hidden>' +
-                            '<label class="form-check-label label-pattern PalmhusTee" for="PalmhusTee"></label>' +
-                            // '<label class="form-check-label label-pattern" for="PalmhusTee">Palmhus Tee</label>' +
+                            '<input class="form-check-input" type="radio" name="itemList" id="Palmhus Tee" value="Palmhus Tee" hidden>' +
+                            '<label class="form-check-label label-pattern PalmhusTee" for="Palmhus Tee"></label>' +
+                            // '<label class="form-check-label label-pattern" for="Palmhus Tee">Palmhus Tee</label>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-6 col-md-3">' +
                         '<div class="form-check p-0 item-selector">' +
-                            '<input class="form-check-input" type="radio" name="itemList" id="TangramAdventureShawl" value="TangramAdventureShawl" hidden>' +
-                            '<label class="form-check-label label-pattern TangramAdventureShawl" for="TangramAdventureShawl"></label>' +
-                            // '<label class="form-check-label label-pattern" for="TangramAdventureShawl">Tangram Adventure Shawl</label>' +
+                            '<input class="form-check-input" type="radio" name="itemList" id="Tangram Adventure Shawl" value="Tangram Adventure Shawl" hidden>' +
+                            '<label class="form-check-label label-pattern TangramAdventureShawl" for="Tangram Adventure Shawl"></label>' +
+                            // '<label class="form-check-label label-pattern" for="Tangram Adventure Shawl">Tangram Adventure Shawl</label>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -93,29 +101,29 @@ function drawHome() {
 
 function loadScript() {
     document.getElementById("freepattern202308").addEventListener("submit", async function(event) {
-        event.preventDefault(); // Prevent the form from submitting traditionally
+        event.preventDefault() // Prevent the form from submitting traditionally
 
-        let collectionName = "freepattern202308";
-        const pb = new PocketBase('http://node3.felip.se:8090');
+        let collectionName = "freepattern202308"
+        const pb = new PocketBase('http://node3.felip.se:8090')
 
-        const itemListRadioButtons = document.getElementsByName("itemList");
-        let selectedItemValue = "";
-        const itemDeliveryRadioButtons = document.getElementsByName("deliveryMethod");
-        let selectedDeliveryValue = "";
+        const itemListRadioButtons = document.getElementsByName("itemList")
+        let selectedItemValue = ""
+        const itemDeliveryRadioButtons = document.getElementsByName("deliveryMethod")
+        let selectedDeliveryValue = ""
 
         // Iterate through the radio buttons to find the selected one
         for (let i = 0; i < itemListRadioButtons.length; i++) {
             if (itemListRadioButtons[i].checked) {
-                selectedItemValue = itemListRadioButtons[i].value;
-                break; // Exit the loop once a checked radio button is found
+                selectedItemValue = itemListRadioButtons[i].value
+                break // Exit the loop once a checked radio button is found
             }
         }
 
         // Iterate through the radio buttons to find the selected one
         for (let i = 0; i < itemDeliveryRadioButtons.length; i++) {
             if (itemDeliveryRadioButtons[i].checked) {
-                selectedDeliveryValue = itemDeliveryRadioButtons[i].value;
-                break; // Exit the loop once a checked radio button is found
+                selectedDeliveryValue = itemDeliveryRadioButtons[i].value
+                break // Exit the loop once a checked radio button is found
             }
         }
 
@@ -126,29 +134,30 @@ function loadScript() {
             ravelry: document.getElementById("ravelryUser").value,
             pattern: selectedItemValue,
             delivery: selectedDeliveryValue
-        };
+        }
 
         console.log(formData)
 
         try {
-            const response = await pb.collection('freepattern202308').create(formData);
+            const response = await pb.collection('freepattern202308').create(formData)
     
             if (response.status === 200) {
                 // Successful submission
-                alert("Your free pattern is getting ready!");
+                // alert("Your free pattern is getting ready!")
+                drawThanks()
                 // You can optionally reset the form here if needed
-                document.getElementById("freepattern202308").reset();
+                document.getElementById("freepattern202308").reset()
             } else {
                 // Handle other possible status codes (400, 403, 404)
-                alert(`Error: ${response.status} - Something went wrong. Please try again.`);
+                alert(`Error: ${response.status} - Something went wrong. Please try again.`)
                 console.log(response.content)
             }
         } catch (error) {
             // Handle network or other errors
-            console.error('Error:', error);
-            alert("An error occurred. Please try again later.");
+            console.error('Error:', error)
+            alert("An error occurred. Please try again later.")
         }
-    });
+    })
 }
 
 function main() {
