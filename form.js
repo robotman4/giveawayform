@@ -19,22 +19,20 @@ function createContent(html="") {
     content.innerHTML = html
 }
 
-function historyListener(event) {
-    drawForm()
-}
-
 function drawThanks() {
     var html = '<!-- GENERATED THANKS -->' +
-        '<div class="d-grid gap-2 px-2 mt-2"> align="center"' +
+        '<div class="d-grid gap-2 px-2 mt-2" align="center">' +
             '<h2>Thank You!</h2>' +
             '<div>Your free pattern is getting ready! :)</div>' +
         '</div>'
     createContent(html)
 }
+
 function drawForm() {
     var html = '<!-- GENERATED FORM -->' +
     '<div class="d-grid gap-2 px-2 mt-2">' +
         '<form id="freepattern202308">' +
+            '<input type="hidden" id="token" name="token" value="">' +
             '<label for="email" class="form-label">Email address</label>' +
             '<div class="input-group mb-3 rounded-pill bg-white">' +
                 '<span class="input-group-icon" id="icon-email"><i class="fa fa-lg fa-envelope"></i></span>' +
@@ -130,7 +128,8 @@ function loadScript() {
 
         // Create a JavaScript object with the form data
         const formData = {
-            token: "0000001",
+            // token: "0000001",
+            token: document.getElementById("token").value,
             email: document.getElementById("emailAddress").value,
             ravelry: document.getElementById("ravelryUser").value,
             pattern: selectedItemValue,
@@ -141,9 +140,10 @@ function loadScript() {
             const response = await pb.collection('freepattern202308').create(formData)
             if (response && response.collectionId) {
                 // Successful submission
-                alert("Your free pattern is getting ready!")
+                // alert("Your free pattern is getting ready!")
                 // You can optionally reset the form here if needed
                 document.getElementById("freepattern202308").reset()
+                drawThanks()
             } else {
                 // Handle non-200 responses with error messages
                 if (response && response.code && response.message) {
@@ -167,10 +167,27 @@ function loadScript() {
     });
 }
 
+function loadToken() {
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+    
+        // Loop through all parameters in the URL
+        urlParams.forEach(function(value, key) {
+            // Check if the parameter key matches your criteria (e.g., it's the random code)
+            if (key === "code") {
+                // Set the value of the hidden input
+                document.getElementById("token").value = value;
+            }
+        });
+    });
+}
+
 function main() {
     createMenu()
     drawForm()
     loadScript()
+    loadToken()
 }
 
 main()
