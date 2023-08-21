@@ -130,25 +130,24 @@ function loadScript() {
 
         console.log(formData)
 
-        const record = await pb.collection('freepattern202308').create(formData);
-
-    //     // Make an HTTP POST request to the Pocketbase API endpoint
-    //     fetch('YOUR_POCKETBASE_API_ENDPOINT', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(formData),
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         // Handle the response from Pocketbase (e.g., display a success message)
-    //         console.log(data);
-    //     })
-    //     .catch(error => {
-    //         // Handle any errors that occur during the request
-    //         console.error('Error:', error);
-    //     });
+        try {
+            const response = await pb.collection('freepattern202308').create(formData);
+    
+            if (response.status === 200) {
+                // Successful submission
+                alert("Your free pattern is getting ready!");
+                // You can optionally reset the form here if needed
+                document.getElementById("freepattern202308").reset();
+            } else {
+                // Handle other possible status codes (400, 403, 404)
+                alert(`Error: ${response.status} - Something went wrong. Please try again.`);
+                console.log(response.content)
+            }
+        } catch (error) {
+            // Handle network or other errors
+            console.error('Error:', error);
+            alert("An error occurred. Please try again later.");
+        }
     });
 }
 
