@@ -28,6 +28,23 @@ function drawThanks() {
     createContent(html)
 }
 
+function drawAbout() {
+    var html = '<!-- GENERATED ABOUT -->' +
+        '<div class="d-grid gap-2 px-2 mt-2" align="center">' +
+            '<h2>GDPR Compliance Notice</h2>' +
+            '<div>Thank you for participating in our giveaway! We want to assure you that we take your privacy seriously and are committed to protecting your personal information.</div>' +
+            '<div><b>Data Storage:</b> We will store your records, including your contact details, until the item you have won in the giveaway has been successfully delivered to you. This storage is necessary to ensure a smooth delivery process and to provide you with any necessary updates regarding your prize.</div>' +
+            '<div><b>Communication:</b> We may contact you if there are any issues with the details you provided during the giveaway, such as delivery address discrepancies or other relevant matters. Our aim is to ensure that you receive your prize without any hitches.</div>' +
+            '<div><b>Data Deletion:</b> Once the giveaway is complete, and you have received your prize, all records related to the giveaway will be promptly and securely destroyed to protect your privacy. We will not retain your data beyond this point.</div>' +
+            '<div>And now, for a knitting joke to lighten the mood:</div>' +
+            '<div><b>Knitting Joke:</b> Why did the knitter bring a ladder to the yarn store? Because they heard the prices were through the roof!</div>' +
+            '<div>Thank you for being a part of our giveaway, and happy knitting! If you have any questions or concerns about your data or this disclaimer, please do not hesitate to <a href="mailto:giveaway@bamilla.com">contact us</a>.</div>' +
+            '<h2>Contributions</h2>' +
+            '<div>Thanks to github, chatgpt, jsfiddle and folks at stackoverflow.</div>' +
+        '</div>'
+    createContent(html)
+}
+
 function drawForm() {
     var html = '<!-- GENERATED FORM -->' +
     '<div class="d-grid gap-2 px-2 mt-2">' +
@@ -154,7 +171,9 @@ function loadScript() {
             }
         } catch (error) {
             // Handle network or other errors
-            if (error.data.code === 400 || error.data.code === 403 || error.data.code === 404) {
+            if (error.data.code === 400) {
+                alert(`Error ${error.data.code}: Looks like your code, email or ravelry has already been used.`);
+            } else if (error.data.code === 403 || error.data.code === 404) {
                 // Handle specific error codes (400, 403, 404)
                 alert(`Error ${error.data.code}: ${error.data.message}`);
             } else {
