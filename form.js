@@ -24,9 +24,9 @@ function historyListener(event) {
 
 function drawThanks() {
     var html = '<!-- GENERATED HTML -->' +
-        '<div class="d-grid gap-2 px-2 mt-2">' +
-            '<h2>Thanks You!</h2>' +
-            '<div align="center">Your pattern will be sent out later :)</div>' +
+        '<div class="d-grid gap-2 px-2 mt-2"> align="center"' +
+            '<h2>Thank You!</h2>' +
+            '<div>Your free pattern is getting ready! :)</div>' +
         '</div>'
     createContent(html)
 }
@@ -115,7 +115,7 @@ function loadScript() {
         for (let i = 0; i < itemListRadioButtons.length; i++) {
             if (itemListRadioButtons[i].checked) {
                 selectedItemValue = itemListRadioButtons[i].value
-                break // Exit the loop once a checked radio button is found
+                break; // Exit the loop once a checked radio button is found
             }
         }
 
@@ -123,7 +123,7 @@ function loadScript() {
         for (let i = 0; i < itemDeliveryRadioButtons.length; i++) {
             if (itemDeliveryRadioButtons[i].checked) {
                 selectedDeliveryValue = itemDeliveryRadioButtons[i].value
-                break // Exit the loop once a checked radio button is found
+                break; // Exit the loop once a checked radio button is found
             }
         }
 
@@ -136,28 +136,35 @@ function loadScript() {
             delivery: selectedDeliveryValue
         }
 
-        console.log(formData)
-
         try {
             const response = await pb.collection('freepattern202308').create(formData)
-    
-            if (response.status === 200) {
+
+            if (response && response.collectionId) {
                 // Successful submission
-                // alert("Your free pattern is getting ready!")
-                drawThanks()
+                alert("Your free pattern is getting ready!")
                 // You can optionally reset the form here if needed
                 document.getElementById("freepattern202308").reset()
             } else {
-                // Handle other possible status codes (400, 403, 404)
-                alert(`Error: ${response.status} - Something went wrong. Please try again.`)
-                console.log(response.content)
+                // Handle non-200 responses with error messages
+                if (response && response.code && response.message) {
+                    // Display the specific error message from the response
+                    alert(`Error ${response.code}: ${response.message}`)
+                } else {
+                    // Generic error message for unknown response format
+                    alert("An error occurred. Please try again later. (2)")
+                }
             }
         } catch (error) {
             // Handle network or other errors
-            console.error('Error:', error)
-            alert("An error occurred. Please try again later.")
+            if (error.data.code === 400 || error.data.code === 403 || error.data.code === 404) {
+                // Handle specific error codes (400, 403, 404)
+                alert(`Error ${error.data.code}: ${error.data.message}`);
+            } else {
+                // Handle all other errors
+                alert("An error occurred. Please try again later. (fatal)")
+            }
         }
-    })
+    });
 }
 
 function main() {
