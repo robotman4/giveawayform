@@ -1,16 +1,3 @@
-function createMenu() {
-    var div = document.createElement("div")
-    var navbar = '<!-- GENERATED MENU -->' +
-    '<nav class="navbar navbar-expand-lg navbar-light bg-light">' +
-        '<div class="container-fluid">' +
-            '<a class="navbar-brand" href="https://www.bamilla.com/patterns/"><img style="height: 25px;" src="https://www.bamilla.com/favicon.ico"> Bamilla</a>' +
-        '</div>' +
-    '</nav>'
-
-    div.innerHTML = navbar
-    document.getElementById("main").appendChild(div)
-}
-
 function createContent(html="") {
     removeContentDivs()
     var div = document.createElement("div")
@@ -29,7 +16,7 @@ function removeContentDivs() {
 }
 
 function generateRandomString(length) {
-    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     let randomString = ''
 
     for (let i = 0; i < length; i++) {
@@ -66,7 +53,7 @@ function drawForm() {
 
 function generateQRCode(link) {
     // Select the HTML element where you want to display the QR code
-    var qrCodeContainer = document.getElementById("qrcode");
+    var qrCodeContainer = document.getElementById("qrcode")
 
     // Empty the content before adding new
     qrCodeContainer.innerHTML = ""
@@ -76,7 +63,7 @@ function generateQRCode(link) {
         text: link,
         width: 256,
         height: 256,
-    });
+    })
 }
 
 function loadScript() {
@@ -84,7 +71,7 @@ function loadScript() {
         event.preventDefault() // Prevent the form from submitting traditionally
 
         let collectionName = "freepattern202308_codes"
-        const pb = new PocketBase('http://node3.felip.se:8090')
+        const pb = new PocketBase('https://givedata.bamilla.com')
 
         // Create a JavaScript object with the form data
         const formData = {
@@ -94,10 +81,9 @@ function loadScript() {
         try {
             const response = await pb.collection('freepattern202308_codes').create(formData)
             if (response && response.collectionId) {
-                // Successful submission
                 document.getElementById("code").value = response.token
                 document.getElementById("created").value = response.created
-                generateQRCode(`https://giveaway.bamilla.com/?code=${response.token}`); // Replace with your link
+                generateQRCode(`https://giveaway.bamilla.com/?code=${response.token}`)
             } else {
                 // Handle non-200 responses with error messages
                 if (response && response.code && response.message) {
@@ -111,20 +97,19 @@ function loadScript() {
         } catch (error) {
             // Handle network or other errors
             if (error.data.code === 400) {
-                alert(`Error ${error.data.code}: Looks like an old code.`);
+                alert(`Error ${error.data.code}: Looks like an old code.`)
             } else if (error.data.code === 403 || error.data.code === 404) {
                 // Handle specific error codes (400, 403, 404)
-                alert(`Error ${error.data.code}: ${error.data.message}`);
+                alert(`Error ${error.data.code}: ${error.data.message}`)
             } else {
                 // Handle all other errors
                 alert("An error occurred. Please try again later. (fatal)")
             }
         }
-    });
+    })
 }
 
 function main() {
-    // createMenu()
     drawForm()
     loadScript()
 }
