@@ -81,8 +81,16 @@ function loadScript() {
         try {
             const response = await pb.collection('freepattern202308_codes').create(formData)
             if (response && response.collectionId) {
+                // Create a Date object from the UTC string
+                const utcDate = new Date(response.created)
+                // Get the local time offset in minutes
+                const offsetMinutes = utcDate.getTimezoneOffset()
+                // Adjust the date to the local time zone
+                utcDate.setMinutes(utcDate.getMinutes() - offsetMinutes)
+                // Convert the adjusted date back to an ISO string with 'Z' to indicate UTC
+                const localTimeString = utcDate.toISOString().replace("T", " ").replace("Z", " ")
+                document.getElementById("created").value = localTimeString
                 document.getElementById("code").value = response.token
-                document.getElementById("created").value = response.created
                 generateQRCode(`https://giveaway.bamilla.com/?code=${response.token}`)
             } else {
                 // Handle non-200 responses with error messages
