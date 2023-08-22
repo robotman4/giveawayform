@@ -132,7 +132,7 @@ function loadScript() {
         event.preventDefault() // Prevent the form from submitting traditionally
 
         let collectionName = "freepattern202308"
-        const pb = new PocketBase('http://node3.felip.se:8090')
+        const pb = new PocketBase('https://givedata.bamilla.com')
 
         const itemListRadioButtons = document.getElementsByName("itemList")
         let selectedItemValue = ""
@@ -184,32 +184,32 @@ function loadScript() {
         } catch (error) {
             // Handle network or other errors
             if (error.data.code === 400) {
-                alert(`Error ${error.data.code}: Looks like your code, email or ravelry has already been used.`);
+                alert(`Error ${error.data.code}: Looks like your code, email or ravelry has already been used.`)
             } else if (error.data.code === 403 || error.data.code === 404) {
                 // Handle specific error codes (400, 403, 404)
-                alert(`Error ${error.data.code}: ${error.data.message}`);
+                alert(`Error ${error.data.code}: ${error.data.message}`)
             } else {
                 // Handle all other errors
                 alert("An error occurred. Please try again later. (fatal)")
             }
         }
-    });
+    })
 }
 
 function loadToken() {
     document.addEventListener("DOMContentLoaded", function() {
         // Get the URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
+        const urlParams = new URLSearchParams(window.location.search)
     
         // Loop through all parameters in the URL
         urlParams.forEach(function(value, key) {
             // Check if the parameter key matches your criteria (e.g., it's the random code)
             if (key === "code") {
                 // Set the value of the hidden input
-                document.getElementById("token").value = value;
+                document.getElementById("token").value = value
             }
-        });
-    });
+        })
+    })
 }
 
 function main() {
