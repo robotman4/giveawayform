@@ -66,11 +66,6 @@ function drawForm() {
                 '<span class="input-group-icon" id="icon-email"><i class="fa fa-lg fa-envelope"></i></span>' +
                 '<input type="email" class="form-control form-control-lg input-custom" aria-describedby="icon-email" id="emailAddress" name="emailAddress" required>' +
             '</div>' +
-            '<label for="ravelry" class="form-label">Ravelry username</label>' +
-            '<div class="input-group mb-3 rounded-pill bg-white">' +
-                '<span class="input-group-icon" id="icon-ravelry"><i class="fa fa-lg fa-ravelry"></i></span>' +
-                '<input type="text" class="form-control form-control-lg input-custom" aria-describedby="icon-ravelry" id="ravelryUser" name="ravelryUser">' +
-            '</div>' +
             '<label for="pattern" class="form-label">Select pattern</label>' +
             '<div class="container">' +
                 '<div class="row">' +
@@ -125,6 +120,11 @@ function drawForm() {
                     '</div>' +
                 '</div>' +
             '</div>' +
+            '<label id="hiddenRavelryLabel" for="ravelry" class="form-label" hidden>Ravelry username</label>' +
+            '<div id="hiddenRavelryInput" class="input-group mb-3 rounded-pill bg-white" hidden>' +
+                '<span class="input-group-icon" id="icon-ravelry"><i class="fa fa-lg fa-ravelry"></i></span>' +
+                '<input type="text" class="form-control form-control-lg input-custom" aria-describedby="icon-ravelry" id="ravelryUser" name="ravelryUser">' +
+            '</div>' +
             '<div class="p-1">&nbsp;</div>' +
             '<button type="submit" class="w-100 btn-lg btn btn-light rounded-pill">Get your free pattern</button>' +
             '<div id="disclaimer" class="form-text-light" align="center">We will never share your details with anyone else.</div>' +
@@ -132,6 +132,28 @@ function drawForm() {
         '</form>' +
     '<div>'
     createContent(html)
+}
+
+// Function to handle radio button clicks
+function toggleRavelry() {
+    const emailRadio = document.getElementById("email")
+    const ravelryRadio = document.getElementById("ravelry")
+    const hiddenRavelryLabel = document.getElementById("hiddenRavelryLabel")
+    const hiddenRavelryInput = document.getElementById("hiddenRavelryInput")
+
+    // Add event listeners to the radio buttons
+    emailRadio.addEventListener("click", toggleRavelry);
+    ravelryRadio.addEventListener("click", toggleRavelry);
+
+    if (this === ravelryRadio) {
+        // If "ravelry" is clicked, show the hidden input
+        hiddenRavelryLabel.removeAttribute("hidden")
+        hiddenRavelryInput.removeAttribute("hidden")
+    } else if (this === emailRadio && !hiddenRavelryLabel.hasAttribute("hidden")) {
+        // If "email" is clicked and the hidden input is shown, hide it
+        hiddenRavelryLabel.setAttribute("hidden", "true")
+        hiddenRavelryInput.setAttribute("hidden", "true")
+    }
 }
 
 function loadScript() {
@@ -224,6 +246,7 @@ function main() {
     drawForm()
     loadScript()
     loadToken()
+    toggleRavelry()
 }
 
 main()
