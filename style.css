@@ -55,6 +55,16 @@ body {
     border-radius: 50%;
     background-image: url(https://www.bamilla.com/patterns/images/Tangram_Adventure_Shawl_1.jpg);
 }
+.SimpleAdventureSocks {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-image: url(https://www.bamilla.com/patterns/images/Simple_Adventure_Socks_1.jpg);
+}
 
 .item-selector input {
     margin:0;
