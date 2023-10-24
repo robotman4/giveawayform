@@ -73,35 +73,30 @@ function drawForm() {
                         '<div class="form-check p-0 item-selector">' +
                             '<input class="form-check-input" type="radio" name="itemList" id="Adventure Lines Tank" value="Adventure Lines Tank" hidden required>' +
                             '<label class="form-check-label label-pattern AdventureLinesTank" for="Adventure Lines Tank"></label>' +
-                            // '<label class="form-check-label" for="Adventure Lines Tank">Adventure Lines Tank</label>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-6 col-md-3">' +
                         '<div class="form-check p-0 item-selector">' +
                             '<input class="form-check-input" type="radio" name="itemList" id="Adventure Lace Tee" value="Adventure Lace Tee" hidden>' +
                             '<label class="form-check-label label-pattern AdventureLaceTee" for="Adventure Lace Tee"></label>' +
-                            // '<label class="form-check-label label-pattern" for="Adventure Lace Tee">Adventure Lace Tee</label>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-6 col-md-3">' +
                         '<div class="form-check p-0 item-selector">' +
                             '<input class="form-check-input" type="radio" name="itemList" id="Palmhus Tee" value="Palmhus Tee" hidden>' +
                             '<label class="form-check-label label-pattern PalmhusTee" for="Palmhus Tee"></label>' +
-                            // '<label class="form-check-label label-pattern" for="Palmhus Tee">Palmhus Tee</label>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-6 col-md-3">' +
                         '<div class="form-check p-0 item-selector">' +
                             '<input class="form-check-input" type="radio" name="itemList" id="Tangram Adventure Shawl" value="Tangram Adventure Shawl" hidden>' +
                             '<label class="form-check-label label-pattern TangramAdventureShawl" for="Tangram Adventure Shawl"></label>' +
-                            // '<label class="form-check-label label-pattern" for="Tangram Adventure Shawl">Tangram Adventure Shawl</label>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-6 col-md-3">' +
                         '<div class="form-check p-0 item-selector">' +
                             '<input class="form-check-input" type="radio" name="itemList" id="Simple Adventure Socks" value="Simple Adventure Socks" hidden>' +
                             '<label class="form-check-label label-pattern SimpleAdventureSocks" for="Simple Adventure Socks"></label>' +
-                            // '<label class="form-check-label label-pattern" for="Simple Adventure Socks">Simple Adventure Socks</label>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -127,8 +122,8 @@ function drawForm() {
             '</div>' +
             '<div class="p-1">&nbsp;</div>' +
             '<button type="submit" class="w-100 btn-lg btn btn-light rounded-pill">Get your free pattern</button>' +
-            '<div id="disclaimer" class="form-text-light" align="center">We will never share your details with anyone else.</div>' +
-            '<div id="disclaimer" class="form-text-light" align="center">More information can be found <a class="link-light" href="#" onclick="drawAbout();return false;">here</a>.</div>' +
+            '<div class="form-text-light" align="center">We will never share your details with anyone else.</div>' +
+            '<div class="form-text-light" align="center">More information can be found <a class="link-light" href="#" onclick="drawAbout();return false;">here</a>.</div>' +
         '</form>' +
     '<div>'
     createContent(html)
@@ -140,6 +135,7 @@ function toggleRavelry() {
     const ravelryRadio = document.getElementById("ravelry")
     const hiddenRavelryLabel = document.getElementById("hiddenRavelryLabel")
     const hiddenRavelryInput = document.getElementById("hiddenRavelryInput")
+    const hiddenRavelryInputField = document.getElementById("ravelryUser")
 
     // Add event listeners to the radio buttons
     emailRadio.addEventListener("click", toggleRavelry);
@@ -149,10 +145,12 @@ function toggleRavelry() {
         // If "ravelry" is clicked, show the hidden input
         hiddenRavelryLabel.removeAttribute("hidden")
         hiddenRavelryInput.removeAttribute("hidden")
+        hiddenRavelryInputField.setAttribute("required", "required");
     } else if (this === emailRadio && !hiddenRavelryLabel.hasAttribute("hidden")) {
         // If "email" is clicked and the hidden input is shown, hide it
         hiddenRavelryLabel.setAttribute("hidden", "true")
         hiddenRavelryInput.setAttribute("hidden", "true")
+        hiddenRavelryInputField.removeAttribute("required")
     }
 }
 
