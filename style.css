@@ -15,7 +15,7 @@ body {
     align-items: center;
 }
 
-.AdventureLinesTank {    
+.AdventureLinesTank {
     background-size: cover;
     background-position: center;
     position: relative;
@@ -25,7 +25,7 @@ body {
     border-radius: 50%;
     background-image: url(https://www.bamilla.com/patterns/images/Adventure_Lines_Tank_1.jpg);
 }
-.AdventureLaceTee {      
+.AdventureLaceTee {
     background-size: cover;
     background-position: center;
     position: relative;
@@ -35,7 +35,7 @@ body {
     border-radius: 50%;
     background-image: url(https://www.bamilla.com/patterns/images/Adventure_Lace_Tee_1.jpg);
 }
-.PalmhusTee {            
+.PalmhusTee {
     background-size: cover;
     background-position: center;
     position: relative;
@@ -45,7 +45,7 @@ body {
     border-radius: 50%;
     background-image: url(https://www.bamilla.com/patterns/images/Palmhus_Tee_1.jpg);
 }
-.TangramAdventureShawl { 
+.TangramAdventureShawl {
     background-size: cover;
     background-position: center;
     position: relative;
