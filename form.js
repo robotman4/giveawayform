@@ -95,8 +95,14 @@ function drawForm() {
                     '</div>' +
                     '<div class="col-6 col-md-3">' +
                         '<div class="form-check p-0 item-selector">' +
-                            '<input class="form-check-input" type="radio" name="itemList" id="Simple Adventure Socks" value="Simple Adventure Socks" hidden>' +
-                            '<label class="form-check-label label-pattern SimpleAdventureSocks" for="Simple Adventure Socks"></label>' +
+                            '<input class="form-check-input" type="radio" name="itemList" id="Simple Adventure Socks SV" value="Simple Adventure Socks SV" hidden>' +
+                            '<label class="form-check-label label-pattern SimpleAdventureSocksSV" for="Simple Adventure Socks SV"></label>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-6 col-md-3">' +
+                        '<div class="form-check p-0 item-selector">' +
+                            '<input class="form-check-input" type="radio" name="itemList" id="Simple Adventure Socks EN" value="Simple Adventure Socks EN" hidden>' +
+                            '<label class="form-check-label label-pattern SimpleAdventureSocksEN" for="Simple Adventure Socks EN"></label>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
