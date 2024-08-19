@@ -37,25 +37,6 @@ function drawThanks() {
     createContent(html)
 }
 
-function drawAbout() {
-    var html = '<!-- GENERATED ABOUT -->' +
-        '<div class="d-grid gap-2 px-2 mt-2" align="center">' +
-            '<a class="btn btn-light rounded-pill" href="#" onclick="drawForm();return false;"><h2>Go back to giveaway</h2></a>' +
-            '<h2>GDPR Compliance Notice</h2>' +
-            '<div>Thank you for participating in our giveaway! We want to assure you that we take your privacy seriously and are committed to protecting your personal information.</div>' +
-            '<div><b>Data Storage:</b> We will store your records, including your contact details, until the items that have been requested in the giveaway has been successfully delivered. This storage is necessary to ensure a smooth delivery process and to provide you with any necessary updates regarding your selection.</div>' +
-            '<div><b>Communication:</b> We may contact you if there are any issues with the details you provided during the giveaway, such as delivery address discrepancies or other relevant matters. Our aim is to ensure that you receive your prize without any hitches.</div>' +
-            '<div><b>Data Deletion:</b> Once the giveaway is complete, and items have been delivered, all records related to the giveaway will be promptly and securely destroyed to protect your privacy. We will not retain your data beyond this point.</div>' +
-            '<div>And now, for a knitting joke to lighten the mood:</div>' +
-            '<div><b>Knitting Joke:</b> Why did the knitter bring a ladder to the yarn store? Because they heard the prices were through the roof!</div>' +
-            '<div>Thank you for being a part of our giveaway, and happy knitting! If you have any questions or concerns about your data or this disclaimer, please do not hesitate to <a class="link-light" href="mailto:giveaway@bamilla.com">contact us</a>.</div>' +
-            '<h2>Contributions</h2>' +
-            '<div>Thanks to github, chatgpt, jsfiddle and people at stackoverflow.</div>' +
-            '<a class="btn btn-light rounded-pill" href="#" onclick="drawForm();return false;"><h2>Go back to giveaway</h2></a>' +
-            '</div>'
-    createContent(html)
-}
-
 function drawForm() {
     var html = '<!-- GENERATED FORM -->' +
     '<div class="d-grid gap-2 px-2 mt-2">' +
@@ -129,10 +110,12 @@ function drawForm() {
             '<div class="p-1">&nbsp;</div>' +
             '<button type="submit" class="w-100 btn-lg btn btn-light rounded-pill">Get your free pattern</button>' +
             '<div class="form-text-light" align="center">We will never share your details with anyone else.</div>' +
-            '<div class="form-text-light" align="center">More information can be found <a class="link-light" href="#" onclick="drawAbout();return false;">here</a>.</div>' +
+            '<div class="form-text-light" align="center">More information can be found <a class="link-light" data-bs-toggle="modal" data-bs-target="#dialogAbout">here</a>.</div>' +
         '</form>' +
-    '<div>'
+    '<div>' +
+    '<div class="modal fade" role="modal" id="dialogAbout"></div>'
     createContent(html)
+    drawAboutModal()
 }
 
 function drawFormOneSock() {
@@ -142,7 +125,7 @@ function drawFormOneSock() {
             '<label for="email" class="form-label">Email address or Ravelry user</label>' +
             '<div class="input-group mb-3 rounded-pill bg-white">' +
                 '<span class="input-group-icon" id="icon-email"><i class="fa fa-lg fa-user"></i></span>' +
-                '<input type="email" class="form-control form-control-lg input-custom" aria-describedby="icon-email" id="emailAddress" name="emailAddress" required>' +
+                '<input type="text" class="form-control form-control-lg input-custom" id="emailAddress" name="emailAddress" required>' +
             '</div>' +
             '<label for="pattern" class="form-label">Your free pattern</label>' +
             '<div class="container">' +
@@ -158,10 +141,40 @@ function drawFormOneSock() {
             '<div class="p-1">&nbsp;</div>' +
             '<button type="submit" class="w-100 btn-lg btn btn-light rounded-pill">Get your free pattern</button>' +
             '<div class="form-text-light" align="center">We will never share your details with anyone else.</div>' +
-            '<div class="form-text-light" align="center">More information can be found <a class="link-light" href="#" onclick="drawAbout();return false;">here</a>.</div>' +
+            '<div class="form-text-light" align="center">More information can be found <a class="link-light" data-bs-toggle="modal" data-bs-target="#dialogAbout">here</a>.</div>' +
         '</form>' +
-    '<div>'
+    '<div>' +
+    '<div class="modal fade" role="modal" id="dialogAbout"></div>'
     createContent(html)
+    drawAboutModal()
+}
+
+function drawAboutModal() {
+  var dialogAbout = document.getElementById("dialogAbout")
+  var html = '<div class="modal-dialog modal-dialog-scrollable">' +
+      '<div class="modal-content bg-dark">' +
+           '<div class="modal-header">' +
+               '<h5 class="modal-title" id="exampleModalLabel">About</h5>' +
+               '<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>' +
+           '</div>' +
+           '<div class="modal-body">' +
+               '<h2>GDPR Compliance Notice</h2>' +
+               '<div>Thank you for participating in our giveaway! We want to assure you that we take your privacy seriously and are committed to protecting your personal information.</div>' +
+               '<div><b>Data Storage:</b> We will store your records, including your contact details, until the items that have been requested in the giveaway has been successfully delivered. This storage is necessary to ensure a smooth delivery process and to provide you with any necessary updates regarding your selection.</div>' +
+               '<div><b>Communication:</b> We may contact you if there are any issues with the details you provided during the giveaway, such as delivery address discrepancies or other relevant matters. Our aim is to ensure that you receive your prize without any hitches.</div>' +
+               '<div><b>Data Deletion:</b> Once the giveaway is complete, and items have been delivered, all records related to the giveaway will be promptly and securely destroyed to protect your privacy. We will not retain your data beyond this point.</div>' +
+               '<div>And now, for a knitting joke to lighten the mood:</div>' +
+               '<div><b>Knitting Joke:</b> Why did the knitter bring a ladder to the yarn store? Because they heard the prices were through the roof!</div>' +
+               '<div>Thank you for being a part of our giveaway, and happy knitting! If you have any questions or concerns about your data or this disclaimer, please do not hesitate to <a class="link-light" href="mailto:giveaway@bamilla.com">contact us</a>.</div>' +
+               '<h2>Contributions</h2>' +
+               '<div>Thanks to github, chatgpt, jsfiddle and people at stackoverflow.</div>' +
+           '</div>' +
+           '<div class="modal-footer">' +
+               '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
+           '</div>' +
+      '</div>' +
+  '</div>'
+  dialogAbout.innerHTML = html
 }
 
 // Function to handle radio button clicks
