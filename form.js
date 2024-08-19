@@ -135,6 +135,35 @@ function drawForm() {
     createContent(html)
 }
 
+function drawFormOneSock() {
+    var html = '<!-- GENERATED FORM -->' +
+    '<div class="d-grid gap-2 px-2 mt-2">' +
+        '<form id="partille_socks">' +
+            '<label for="email" class="form-label">Email address or Ravelry user</label>' +
+            '<div class="input-group mb-3 rounded-pill bg-white">' +
+                '<span class="input-group-icon" id="icon-email"><i class="fa fa-lg fa-user"></i></span>' +
+                '<input type="email" class="form-control form-control-lg input-custom" aria-describedby="icon-email" id="emailAddress" name="emailAddress" required>' +
+            '</div>' +
+            '<label for="pattern" class="form-label">Your free pattern</label>' +
+            '<div class="container">' +
+                '<div align="center" class="form-check p-0 item-selector">' +
+                    '<input class="form-check-input" type="radio" name="itemList" id="Simple Adventure Socks EN" value="Simple Adventure Socks EN" hidden checked>' +
+                    '<label class="form-check-label label-patternOneSock SimpleAdventureSocksENLG" for="Simple Adventure Socks EN"></label>' +
+                '</div>' +
+            '</div>' +
+            '<div class="p-0">&nbsp;</div>' +
+            '<div class="container p-1">' +
+            '<input type="hidden" name="deliveryMethod" id="email" value="email" autocomplete="off" checked>' +
+            '</div>' +
+            '<div class="p-1">&nbsp;</div>' +
+            '<button type="submit" class="w-100 btn-lg btn btn-light rounded-pill">Get your free pattern</button>' +
+            '<div class="form-text-light" align="center">We will never share your details with anyone else.</div>' +
+            '<div class="form-text-light" align="center">More information can be found <a class="link-light" href="#" onclick="drawAbout();return false;">here</a>.</div>' +
+        '</form>' +
+    '<div>'
+    createContent(html)
+}
+
 // Function to handle radio button clicks
 function toggleRavelry() {
     const emailRadio = document.getElementById("email")
@@ -217,7 +246,74 @@ function loadScript() {
         } catch (error) {
             // Handle network or other errors
             if (error.data.code === 400) {
-                alert(`Error ${error.data.code}: Looks like your code, email or ravelry has already been used.`)
+                alert(`Error ${error.data.code}: Looks like your code, email or ravelry has already been used. ${error.data.message}`)
+            } else if (error.data.code === 403 || error.data.code === 404) {
+                // Handle specific error codes (400, 403, 404)
+                alert(`Error ${error.data.code}: ${error.data.message}`)
+            } else {
+                // Handle all other errors
+                alert("An error occurred. Please try again later. (fatal)")
+            }
+        }
+    })
+}
+
+function loadScriptPartilleSocks() {
+    document.getElementById("partille_socks").addEventListener("submit", async function(event) {
+        event.preventDefault() // Prevent the form from submitting traditionally
+
+        let collectionName = "partille_socks"
+        const pb = new PocketBase('https://givedata.bamilla.com')
+
+        const itemListRadioButtons = document.getElementsByName("itemList")
+        let selectedItemValue = ""
+        const itemDeliveryRadioButtons = document.getElementsByName("deliveryMethod")
+        let selectedDeliveryValue = ""
+
+        // Iterate through the radio buttons to find the selected one
+        for (let i = 0; i < itemListRadioButtons.length; i++) {
+            if (itemListRadioButtons[i].checked) {
+                selectedItemValue = itemListRadioButtons[i].value
+                break; // Exit the loop once a checked radio button is found
+            }
+        }
+
+        // Iterate through the radio buttons to find the selected one
+        for (let i = 0; i < itemDeliveryRadioButtons.length; i++) {
+            if (itemDeliveryRadioButtons[i].checked) {
+                selectedDeliveryValue = itemDeliveryRadioButtons[i].value
+                break; // Exit the loop once a checked radio button is found
+            }
+        }
+
+        // Create a JavaScript object with the form data
+        const formData = {
+            contact: document.getElementById("emailAddress").value,
+            pattern: selectedItemValue,
+            delivery: "email"
+        }
+
+        try {
+            const response = await pb.collection(collectionName).create(formData)
+            if (response && response.collectionId) {
+                // Successful submission
+                // You can optionally reset the form here if needed
+                document.getElementById(collectionName).reset()
+                drawThanks()
+            } else {
+                // Handle non-200 responses with error messages
+                if (response && response.code && response.message) {
+                    // Display the specific error message from the response
+                    alert(`Error ${response.code}: ${response.message}`)
+                } else {
+                    // Generic error message for unknown response format
+                    alert("An error occurred. Please try again later. (2)")
+                }
+            }
+        } catch (error) {
+            // Handle network or other errors
+            if (error.data.code === 400) {
+                alert(`Error ${error.data.code}: Looks like your code, email or ravelry has already been used. ${error.data.message}`)
             } else if (error.data.code === 403 || error.data.code === 404) {
                 // Handle specific error codes (400, 403, 404)
                 alert(`Error ${error.data.code}: ${error.data.message}`)
@@ -230,27 +326,37 @@ function loadScript() {
 }
 
 function loadToken() {
-    document.addEventListener("DOMContentLoaded", function() {
-        // Get the URL parameters
-        const urlParams = new URLSearchParams(window.location.search)
-    
-        // Loop through all parameters in the URL
-        urlParams.forEach(function(value, key) {
-            // Check if the parameter key matches your criteria (e.g., it's the random code)
-            if (key === "code") {
-                // Set the value of the hidden input
-                document.getElementById("token").value = value
-            }
-        })
-    })
+    // Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search)
+
+    // Retrieve the value of the "code" parameter
+    const code = urlParams.get('code');
+
+    // Set the token in form
+    document.getElementById("token").value = code
 }
 
 function main() {
     createMenu()
-    drawForm()
-    loadScript()
-    loadToken()
-    toggleRavelry()
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPath = window.location.pathname;
+        // Execute functions depending on the current URL path
+        switch (currentPath) {
+            case '/festival/':
+                drawForm()
+                loadScript()
+                loadToken()
+                toggleRavelry()
+                break;
+            case '/partille-socks/':
+                drawFormOneSock()
+                loadScriptPartilleSocks()
+                break;
+            default:
+                console.log("default")
+                break;
+        }
+    });
 }
 
 main()

@@ -76,6 +76,17 @@ body {
     background-image: url(https://www.bamilla.com/patterns/images/Simple_Adventure_Socks_1_en.jpg);
 }
 
+.SimpleAdventureSocksENLG {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-image: url(https://www.bamilla.com/patterns/images/Simple_Adventure_Socks_1_en.jpg);
+}
+
 .item-selector input {
     margin:0;
     padding:0;
@@ -97,6 +108,17 @@ body {
     opacity: 1;
 }
 
+.item-selector input:checked + .label-patternOneSock {
+    opacity: 1;
+    margin:0;
+    padding:0;
+    box-shadow: 0px 0px 15px lightgray;
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+
+
 .label-pattern {
     cursor:pointer;
     background-size:contain;
@@ -104,6 +126,21 @@ body {
     display:inline-block;
     width:150px;
     height:150px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(2) grayscale(0) opacity(.5);
+       -moz-filter: brightness(2) grayscale(0) opacity(.5);
+            filter: brightness(2) grayscale(0) opacity(.5);
+}
+
+.label-patternOneSock {
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:300px;
+    height:300px;
     -webkit-transition: all 100ms ease-in;
        -moz-transition: all 100ms ease-in;
             transition: all 100ms ease-in;

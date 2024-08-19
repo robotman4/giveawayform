@@ -91,7 +91,7 @@ function loadScript() {
                 const localTimeString = utcDate.toISOString().replace("T", " ").replace("Z", " ")
                 document.getElementById("created").value = localTimeString
                 document.getElementById("code").value = response.token
-                generateQRCode(`https://giveaway.bamilla.com/?code=${response.token}`)
+                generateQRCode(`https://giveaway.bamilla.com/festival/?code=${response.token}`)
             } else {
                 // Handle non-200 responses with error messages
                 if (response && response.code && response.message) {
